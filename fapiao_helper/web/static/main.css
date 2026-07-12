@@ -1,0 +1,132 @@
+/* 发票助手 - 简洁实用样式 */
+* { box-sizing: border-box; }
+body {
+    margin: 0;
+    font-family: -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    color: #222;
+    background: #f5f6f8;
+}
+.app-header {
+    background: #2c3e50;
+    color: #fff;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+.app-header h1 { font-size: 18px; margin: 0; font-weight: 600; }
+.tabs { display: flex; gap: 4px; }
+.tab-btn {
+    background: transparent;
+    border: none;
+    color: #cfd8e3;
+    padding: 6px 14px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
+}
+.tab-btn:hover { background: rgba(255,255,255,0.1); color: #fff; }
+.tab-btn.active { background: #3498db; color: #fff; }
+.app-main { padding: 20px; max-width: 1200px; margin: 0 auto; }
+.app-footer {
+    border-top: 1px solid #e1e4e8;
+    padding: 8px 20px;
+    color: #888;
+    font-size: 12px;
+    background: #fff;
+}
+
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+.card {
+    background: #fff;
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+}
+.card h2 { font-size: 16px; margin: 0 0 12px; }
+.card h3 { font-size: 14px; margin: 12px 0 8px; color: #555; }
+
+.form-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 8px 0;
+    flex-wrap: wrap;
+}
+.form-row label { font-size: 14px; }
+
+input[type="text"], input[type="month"], input[type="number"], select {
+    padding: 6px 8px;
+    border: 1px solid #d0d7de;
+    border-radius: 4px;
+    font-size: 14px;
+}
+button {
+    padding: 6px 14px;
+    border: 1px solid #d0d7de;
+    background: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+button:hover { background: #f0f3f6; }
+button.primary { background: #3498db; color: #fff; border-color: #3498db; }
+button.primary:hover { background: #2980b9; }
+button.primary:disabled { background: #bdc3c7; border-color: #bdc3c7; cursor: not-allowed; }
+button.ghost { background: transparent; }
+
+.drop-zone {
+    border: 2px dashed #bdc3c7;
+    border-radius: 6px;
+    padding: 28px;
+    text-align: center;
+    color: #7f8c8d;
+    cursor: pointer;
+    margin: 12px 0;
+    transition: border-color .15s, background .15s;
+}
+.drop-zone.dragover { border-color: #3498db; background: #ebf5fb; }
+.file-list { list-style: none; padding: 0; margin: 8px 0 0; text-align: left; }
+.file-list li { padding: 2px 0; font-size: 13px; }
+
+.filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; align-items: center; }
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin: 8px 0;
+}
+.data-table th, .data-table td {
+    border: 1px solid #e1e4e8;
+    padding: 6px 8px;
+    text-align: left;
+}
+.data-table thead { background: #f6f8fa; }
+.data-table tbody tr:hover { background: #fafbfc; }
+.data-table tfoot .sum-row { font-weight: 600; background: #f6f8fa; }
+
+.pager { display: flex; align-items: center; gap: 12px; margin-top: 8px; }
+
+.msg { font-size: 13px; color: #27ae60; }
+.msg.error { color: #e74c3c; }
+
+.debug-output {
+    background: #1e1e1e;
+    color: #d4d4d4;
+    padding: 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    max-height: 480px;
+    overflow: auto;
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+.editable { background: #fffef0; }
+.status-pending { color: #e67e22; }
+.status-verified { color: #27ae60; }
+.status-archived { color: #7f8c8d; }

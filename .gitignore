@@ -1,0 +1,33 @@
+# 真实配置(含 api_key)
+config.yaml
+
+# 发票原件库
+invoices/
+
+# 运行数据
+data/fapiao.db
+data/fapiao.db-wal
+data/fapiao.db-shm
+data/models/
+data/logs/
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+
+# 测试缓存
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDE
+.idea/
+.vscode/
+
+# 系统
+.DS_Store
+Thumbs.db
