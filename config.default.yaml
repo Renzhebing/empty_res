@@ -1,0 +1,44 @@
+# P01_fapiao_helper 脱敏示例配置
+# 复制为 config.yaml 并填入真实信息后使用
+
+server:
+  host: "127.0.0.1"
+  port: 5000
+
+paths:
+  inbox: "invoices/inbox"
+  library: "invoices/library"
+  exports: "invoices/exports"
+  db: "data/fapiao.db"
+  logs: "data/logs"
+  models: "data/models"
+
+projects:
+  - name: "默认项目"
+    note: "未分类发票归入此项目"
+
+ocr:
+  lang: "ch"
+  use_angle_cls: true
+  det_model_dir: ""
+  rec_model_dir: ""
+
+# 云端 LLM 兜底(默认关闭;只有显式填写 api_key 才启用)
+llm:
+  providers: []
+  # 示例:
+  # - name: "deepseek"
+  #   base_url: "https://api.deepseek.com/v1"
+  #   api_key: "sk-xxxxxxxx"
+  #   model: "deepseek-chat"
+  #   vision: false
+  # - name: "qwen-vl"
+  #   base_url: "https://dashscope.aliyuncs.com/compatible-mode/v1"
+  #   api_key: "sk-xxxxxxxx"
+  #   model: "qwen-vl-max"
+  #   vision: true
+
+# 解析阈值
+parser:
+  classify_threshold: 0.3
+  confidence_min: 0.5

@@ -1,0 +1,22 @@
+# P01_fapiao_helper 依赖锁定
+# 核心依赖
+Flask>=3.0,<4.0
+PyYAML>=6.0,<7.0
+openpyxl>=3.1,<4.0
+reportlab>=4.0,<5.0
+
+# OCR(可选,缺失时降级为仅 LLM 模式)
+paddleocr>=2.7,<3.0
+paddlepaddle>=2.6,<3.0
+
+# PDF 处理
+PyMuPDF>=1.24,<2.0
+
+# 文件夹监控(可选)
+watchdog>=4.0,<5.0
+
+# LLM 兜底(OpenAI 兼容端点)
+openai>=1.30,<2.0
+
+# 测试
+pytest>=8.0,<9.0
