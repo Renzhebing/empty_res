@@ -1,5 +1,6 @@
 @echo off
 chcp 65001 >nul
+setlocal enabledelayedexpansion
 REM P01_fapiao_helper 启动脚本（Windows）
 REM 双击运行：自动准备 venv、安装依赖、启动服务并打开浏览器到 http://127.0.0.1:5000
 cd /d "%~dp0"
@@ -23,6 +24,17 @@ if not exist "%PYTHON%" (
 )
 
 REM 2. 安装依赖（首次或 requirements.txt 更新时）
+REM 检查 requirements.txt 是否比 marker 新（与 start.sh 行为一致）
+if exist "%MARKER%" (
+    set "NEWEST="
+    for /f "delims=" %%i in ('dir /b /o-d "%REQ%" "%MARKER%" 2^>nul') do (
+        if "!NEWEST!"=="" set "NEWEST=%%i"
+    )
+    if "!NEWEST!"=="%REQ%" (
+        echo 检测到 requirements.txt 已更新，重新安装依赖...
+        del "%MARKER%"
+    )
+)
 if not exist "%MARKER%" (
     echo [2/4] 安装依赖（首次较慢，含 PaddleOCR 模型约 200MB）...
     %PIP% install --upgrade pip

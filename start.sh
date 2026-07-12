@@ -16,6 +16,10 @@ MARKER="$VENV/.deps_installed"
 # 1. 创建虚拟环境
 if [ ! -x "$PYTHON" ]; then
     echo "[1/4] 创建虚拟环境 .venv ..."
+    if ! command -v python3 >/dev/null 2>&1; then
+        echo "错误：未找到 python3，请先安装 Python 3.9+ 并加入 PATH。"
+        exit 1
+    fi
     python3 -m venv "$VENV"
 fi
 
