@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- 导入 Tab -->
+<section id="tab-import" class="tab-panel active">
+    <div class="card">
+        <h2>导入发票</h2>
+        <div class="form-row">
+            <label>默认项目</label>
+            <input type="text" id="default-project" placeholder="留空使用默认项目">
+        </div>
+        <div id="drop-zone" class="drop-zone">
+            <p>拖拽发票文件到此处,或点击选择</p>
+            <input type="file" id="file-input" multiple accept="image/*,application/pdf" hidden>
+            <ul id="file-list" class="file-list"></ul>
+        </div>
+        <div class="form-row">
+            <button id="upload-btn" class="primary" disabled>开始上传并识别</button>
+            <span id="upload-msg" class="msg"></span>
+        </div>
+        <div class="form-row">
+            <h3>最近任务</h3>
+            <button id="refresh-jobs" class="ghost">刷新</button>
+        </div>
+        <table id="jobs-table" class="data-table">
+            <thead><tr><th>ID</th><th>状态</th><th>进度</th><th>失败</th><th>创建时间</th></tr></thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</section>
+
+<!-- 库 Tab -->
+<section id="tab-library" class="tab-panel">
+    <div class="card">
+        <h2>发票库</h2>
+        <div class="filters">
+            <select id="f-status"><option value="">全部状态</option><option>pending</option><option>verified</option><option>archived</option></select>
+            <select id="f-project"><option value="">全部项目</option></select>
+            <input type="month" id="f-month" placeholder="开票月份">
+            <input type="text" id="f-q" placeholder="搜索发票号/销售方/购买方">
+            <button id="lib-search" class="primary">查询</button>
+        </div>
+        <table class="data-table" id="invoices-table">
+            <thead>
+                <tr>
+                    <th><input type="checkbox" id="select-all"></th>
+                    <th>ID</th><th>发票号</th><th>日期</th><th>销售方</th><th>购买方</th>
+                    <th>金额</th><th>税额</th><th>价税合计</th><th>类型</th><th>项目</th><th>状态</th><th>复核</th><th>操作</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+            <tfoot>
+                <tr class="sum-row">
+                    <td colspan="6">合计</td>
+                    <td id="sum-amount">0.00</td>
+                    <td id="sum-tax">0.00</td>
+                    <td id="sum-total">0.00</td>
+                    <td colspan="5"></td>
+                </tr>
+            </tfoot>
+        </table>
+        <div class="pager">
+            <button id="prev-page" class="ghost">上一页</button>
+            <span id="page-info">第 1 页</span>
+            <button id="next-page" class="ghost">下一页</button>
+        </div>
+    </div>
+</section>
+
+<!-- 导出 Tab -->
+<section id="tab-export" class="tab-panel">
+    <div class="card">
+        <h2>导出</h2>
+        <h3>XLSX 报表</h3>
+        <div class="form-row">
+            <label><input type="radio" name="xlsx-mode" value="selected" checked> 导出库中勾选项</label>
+            <label><input type="radio" name="xlsx-mode" value="filter"> 按当前筛选条件导出全部</label>
+        </div>
+        <button id="export-xlsx" class="primary">导出 XLSX</button>
+    </div>
+    <div class="card">
+        <h3>PDF 合并</h3>
+        <div class="form-row">
+            <label>封面标题</label>
+            <input type="text" id="cover-title" placeholder="如:2026年6月发票汇总">
+        </div>
+        <button id="export-pdf" class="primary">合并勾选项为 PDF</button>
+        <span id="export-msg" class="msg"></span>
+    </div>
+</section>
+
+<!-- 调试 Tab -->
+<section id="tab-debug" class="tab-panel">
+    <div class="card">
+        <h2>调试</h2>
+        <div class="form-row">
+            <button id="load-logs" class="ghost">刷新日志</button>
+            <input type="number" id="invoice-debug-id" placeholder="发票 ID" min="1">
+            <button id="load-invoice-debug" class="ghost">查发票调试</button>
+        </div>
+        <pre id="debug-output" class="debug-output">点击按钮查看日志或发票调试信息。</pre>
+    </div>
+</section>
+{% endblock %}
